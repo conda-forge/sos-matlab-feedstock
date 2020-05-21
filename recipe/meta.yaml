@@ -1,13 +1,13 @@
 {% set name = "sos-matlab" %}
-{% set version = "0.18.3" %}
+{% set version = "0.18.4" %}
 
 package:
-  name: "{{ name|lower }}"
-  version: "{{ version }}"
+  name: {{ name|lower }}
+  version: {{ version }}
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 54bf4ddcea30d43a90fc8a7432f990aae98351b9f0de4dc64196424ea1de99b9
+  sha256: 4f109b1f6f007e00591e209a87d82f6cf0ba38e53a66701b859ea4c923336961
 
 build:
   noarch: python
@@ -43,18 +43,18 @@ outputs:
         - pytest
         - selenium
       imports:
-          - sos_matlab
+        - sos_matlab
       commands:
-          - python test_octave.py
+        - python test_octave.py
       files:
-          - test_octave.py
+        - test_octave.py
 
 about:
   home: https://github.com/vatlab/sos-matlab
   license: BSD-3-Clause
   license_family: BSD
   license_file: LICENSE
-  summary: "SoS language module for MATLAB and Octave"
+  summary: SoS language module for MATLAB and Octave
   doc_url: https://vatlab.github.io/sos-docs/
   dev_url: https://github.com/vatlab/sos-matlab
 
