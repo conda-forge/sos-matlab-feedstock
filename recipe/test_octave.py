@@ -13,7 +13,7 @@ class TestSoSKernel(unittest.TestCase):
             stdout, stderr = assemble_output(kc.get_iopub_msg)
             self.assertEqual(stdout.strip(), '', f'Stdout is not empty, "{stdout}" received')
             self.assertEqual(stderr.strip(), '', f'Stderr is not empty, "{stderr}" received')
-            execute(kc=kc, code='%use Octave\n%get a\na')
+            kc.execute(code='%use Octave\n%get a\na')
             stdout, stderr = assemble_output(kc.get_iopub_msg)
             self.assertEqual(stderr.strip(), '', f'Stderr is not empty, "{stderr}" received')
             self.assertEqual(stdout.strip(), 'a =  1', f'Stdout should be a =  1, "{stdout}" received')
