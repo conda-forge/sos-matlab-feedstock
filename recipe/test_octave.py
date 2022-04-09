@@ -10,13 +10,15 @@ class TestSoSKernel(unittest.TestCase):
     def testKernel(self):
         with sos_kernel() as kc:
             execute(kc=kc, code='a = 1')
-            stdout, stderr = assemble_output(kc.iopub_channel)
+            stdout, stderr = assemble_output(kc.get_iopub_msg)
             self.assertEqual(stdout.strip(), '', f'Stdout is not empty, "{stdout}" received')
             self.assertEqual(stderr.strip(), '', f'Stderr is not empty, "{stderr}" received')
-            execute(kc=kc, code='%use Octave\n%get a\na')
-            stdout, stderr = assemble_output(kc.iopub_channel)
+            execute(kc=kc, code='%use Octave\n%get a')
+            stdout, stderr = assemble_output(kc.get_iopub_msg)
             self.assertEqual(stderr.strip(), '', f'Stderr is not empty, "{stderr}" received')
-            self.assertEqual(stdout.strip(), 'a =  1', f'Stdout should be a =  1, "{stdout}" received')
+            execute(kc=kc, code='a')
+            stdout, stderr = assemble_output(kc.get_iopub_msg)
+            self.assertTrue('a = 1' in stdout, f'"{stdout}" received')
 
 if __name__ == '__main__':
     unittest.main()
