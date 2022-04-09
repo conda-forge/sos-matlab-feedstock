@@ -28,10 +28,14 @@ requirements:
 
 outputs:
   - name: sos-matlab
+    build:
+      noarch: python
     test:
       imports:
         - sos_matlab
   - name: sos-octave
+    build:
+      noarch: python
     requirements:
       run:
         - {{ pin_subpackage('sos-matlab', exact=True) }}
