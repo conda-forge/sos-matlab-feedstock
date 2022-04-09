@@ -42,7 +42,7 @@ outputs:
         - nose
         - pytest
         - selenium
-        - jupyter_contrib_nbextensions
+        - jupyter_contrib_nbextensions >=0.5.1
       imports:
         - sos_matlab
       commands:
