@@ -20,7 +20,7 @@ requirements:
     - pip
     - python >=3.6
   run:
-    - sos-notebook >=0.20.0
+    - sos-notebook >=0.23.2
     - scipy
     - numpy
     - pandas
