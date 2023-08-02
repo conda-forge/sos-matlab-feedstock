@@ -1,5 +1,5 @@
 {% set name = "sos-matlab" %}
-{% set version = "0.20.0" %}
+{% set version = "0.20.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: cce9b7672393121d3fba7dfe9824e313863593285a7f69cb87057bcd04dea691
+  sha256: 7d43f151d89ecd58a5225ea5d7e58193b80316996ed12e144d9f4da09beddd5f
 
 build:
   noarch: python
