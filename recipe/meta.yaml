@@ -6,31 +6,33 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: 2e38311b87649be27338e8e59a8c29bdd58072237cee4fc0f33d700d0e8372c4
 
 build:
   noarch: python
-  number: 0
+  number: 1
   script:
     - python -m pip install . -vv
 
 requirements:
   host:
     - pip
-    - python >=3.6
+    - python {{ python_min }}
   run:
     - sos-notebook >=0.23.2
     - scipy
     - numpy
     - pandas
-    - python >=3.6
+    - python >={{ python_min }}
 
 outputs:
   - name: sos-matlab
     build:
       noarch: python
     test:
+      requires:
+        - python {{ python_min }}
       imports:
         - sos_matlab
   - name: sos-octave
@@ -47,6 +49,7 @@ outputs:
         - pytest
         - selenium
         - jupyter_contrib_nbextensions >=0.5.1
+        - python {{ python_min }}
       imports:
         - sos_matlab
       commands:
